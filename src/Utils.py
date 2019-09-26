@@ -101,13 +101,13 @@ class Copter:
     def takeoff(self, z):
         telem = self.get_telemetry()
         print(telem)
-        self.navigate(z=2, speed=1.5, frame_id="body", auto_arm=True)
+        self.navigate(z=1, speed=0.5, frame_id="body", auto_arm=True)
         print("Sleeping")
-        rospy.sleep(7)
-        self.navigate_aruco(x=0.5, y=0.5, z=z, speed=0.5)
+        rospy.sleep(1.3)
+        self.navigate_aruco(x=0.2, y=0.2, z=z, speed=0.5)
         print("aruco")
 
-    def go_to_point(self, point, yaw=float('nan'), speed=0.4, tolerance=0.218, floor=False): #0.185
+    def go_to_point(self, point, yaw=float('nan'), speed=0.4, tolerance=0.25, floor=False): #0.185
         self.navigate_aruco(x=point[0], y=point[1], z=point[2], yaw=yaw, speed=speed,  floor=floor)
         while True:
             telem = self.get_telemetry_aruco(floor=floor)
