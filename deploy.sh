@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host="192.168.11.1"
+host="192.168.1.159"
 
 # read -sp 'password: ' passvar
 echo ""
