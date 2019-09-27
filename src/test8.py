@@ -7,7 +7,7 @@ import time
 
 rospy.init_node('flight')
 
-z = 2
+z = 1.55
 
 # points = [((0, 0, z), 0),
 #           ((0, 1, z), 0),
@@ -19,7 +19,7 @@ z = 2
 #           ((0.7, 0, z), 0),
 #           ((0, 0, z), 1)]
 
-center_point = (1.13, 0.5)
+center_point = (1.8, 0.3) # Y, X
 
 points = [((center_point[0]-2.5, center_point[1]-1, z), 0),
           ((center_point[0]-3, center_point[1]-0.5, z), 0),
@@ -45,7 +45,9 @@ copter.takeoff(1.5)
 copter.go_to_point((0, 0, z))
 time.sleep(3)
 for point, dt in points:
-    copter.go_to_point(point)
+    y, x, z = point
+
+    copter.go_to_point((x, y, z), speed=0.7)
     time.sleep(dt)
 
 copter.land()
